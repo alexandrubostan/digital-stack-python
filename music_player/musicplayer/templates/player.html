@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+
+{% load static %}
+
+<head>
+  <title>Music Player</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <link rel="stylesheet" href="{% static 'style.css' %}">
+
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto">
+  <script>
+    var csrftoken = '{{csrf_token}}';
+    var fetchurl = "{% url 'post' %}";
+    var saveurl = "{% url 'save' %}";
+  </script>
+  <script src="{% static 'main.js' %}"></script>
+</head>
+
+<body>
+  <div id="canvas-wrap">
+    <input type="file" id="thefile" onchange="file_changed(this)" onclick="this.value=null;" accept="audio/*" />
+    <canvas id="canvas"></canvas>
+    <div id="overlay"></div>
+  </div>
+  <div id="hahaa">
+    <button type="button" id="savefile">Save song</button>
+  </div>
+  <audio id="audio" controls controlsList="noplaybackrate nodownload"></audio>
+</body>
+
+</html>
